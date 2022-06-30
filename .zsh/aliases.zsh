@@ -10,25 +10,12 @@ alias ls='ls -G'                              # colorize `ls` output
 alias grep='grep --color=auto'                # colorize `grep` output
 alias zshrc='vi ~/.zshrc'
 
-# Fzf Fu
 switch-branch () {
-  S_BRANCH=$(git for-each-ref --sort=-committerdate --format="%(refname)" refs/heads | fzf --preview="git log {}")
+  git fetch -p
+  S_BRANCH=$(git for-each-ref --sort=-committerdate --format="%(refname)" refs/ | fzf --preview="git log {}")
   if [ ! -z "S_BRANCH" ]
   then
     R_BRANCH=$(echo $S_BRANCH | sed -e 's@refs/heads/@@')
-    if [ ! -z "$R_BRANCH" ]
-    then
-      git checkout $R_BRANCH
-    fi
-  fi
-}
-
-switch-remote-branch () {
-  git fetch -p
-  S_BRANCH=$(git for-each-ref --sort=-committerdate --format="%(refname)" refs/remotes | fzf --preview="git log {}")
-  if [ ! -z "S_BRANCH" ]
-  then
-    R_BRANCH=$(echo $S_BRANCH | sed -e 's@refs/remotes/@@')
     if [ ! -z "$R_BRANCH" ]
     then
       git checkout $R_BRANCH
@@ -61,12 +48,7 @@ alias r="git reset"
 alias rh="git reset --hard"
 alias su="git submodule update"
 alias s="switch-branch"
-alias sr="switch-remote-branch"
+alias sr="switch-branch"
 alias t="git status"
 alias v="vim"
 alias vs="code"
-# alias x="npm i && npm run build"
-# alias xx="rm -rf node_modules && x"
-# alias z="npm run start"
-# alias zz="xx && z"
-
