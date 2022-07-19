@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 function symlink-dotfiles {
-  files="zshrc zsh"
+  files="zshrc zsh gitignore"
   for file in ${files}; do
     echo "Symlinking $PWD/.${file} to ${HOME}/.${file}"
     ln -sf $PWD/.${file} ${HOME}/.${file}
