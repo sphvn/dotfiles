@@ -52,3 +52,8 @@ alias sr="switch-branch"
 alias t="git status"
 alias v="vim"
 alias vs="code"
+
+# Make WSL work like OSX
+alias open="explorer.exe ."
+alias pbcopy='xclip -selection clipboard'
+alias pbpaste='xclip -selection clipboard -o'
