@@ -1,0 +1,1 @@
+/home/su/src/dotfiles/.zsh
