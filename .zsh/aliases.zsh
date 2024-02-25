@@ -10,6 +10,8 @@ alias ls='ls -G'                              # colorize `ls` output
 alias grep='grep --color=auto'                # colorize `grep` output
 alias zshrc='vi ~/.zshrc'
 
+# ->
+
 switch-branch () {
   git fetch -p
   S_BRANCH=$(git for-each-ref --sort=-committerdate --format="%(refname)" refs/ | fzf --preview="git log {}")
